@@ -9,10 +9,14 @@ def get_total_cash(dict):
     return dict["admin"]["total_cash"]
 
 
-# def add_or_remove_cash(dict, cash):
-#     prev_ammount = dict["admin"]["total_cash"]
-#     prev_ammount += cash
-#     return prev_ammount
-
 def add_or_remove_cash(dict, cash):
     dict["admin"]["total_cash"] += cash
+
+
+def get_pets_sold(dict):
+    return dict["admin"]["pets_sold"]
+
+
+def increase_pets_sold(dict, number_of_pets):
+    dict["admin"]["pets_sold"] += number_of_pets
+    return dict
