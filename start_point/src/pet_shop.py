@@ -39,6 +39,7 @@ def find_pet_by_name(dict, name):
     for item in dict["pets"]:
         if item["name"] == name:
             return item
+    return
 
 
 def remove_pet_by_name(dict, name):
@@ -73,3 +74,21 @@ def get_customer_pet_count(customer):
 def add_pet_to_customer(customer, new_pet):
     customer["pets"].append(new_pet)
     return customer
+
+
+def customer_can_afford_pet(customer, pet):
+    if customer["cash"] >= pet["price"]:
+        return True
+    else:
+        return False
+
+
+def sell_pet_to_customer(dict, pet, customer):
+    if not pet:
+        return
+    if customer_can_afford_pet(customer, pet) == True:
+        customer["cash"] -= pet["price"]
+        customer["pets"].append(pet)
+        dict["admin"]["pets_sold"] += 1
+        dict["admin"]["total_cash"] += pet["price"]
+        return customer
